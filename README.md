@@ -74,11 +74,133 @@ networks:
     driver: bridge
 ```
 
+### Start Spring Boot App & Kafka Broker Containers as Services on a Single Host Server
+
+`docker-compose -p dev -f docker-compose-single-host.yml up`
+
+Please note, that `dev` is the project name, and it serves the development environment for developers.
+
+### Check the Running Containers
+
+`docker ps`
+
+### Take Down the Containers
+
+`docker-compose -p dev -f docker-compose-single-host.yml down`
+
 ## Running the Spring Boot Application and Kafka Broker on a Swarm Cluster
 
+In a Swarm cluster mode, we can have 3 application instances running, and 1 Kafka broker serving all the messages.
+
 ### Docker-Compose-Swarm-Cluster File
+
+File: [`docker-compose-swarm-cluster.yml`](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/docker/docker-compose-swarm-cluster.yml)
+
+```yaml
+version: '3'
+services:
+  springboot-webapp:
+    image: michaeldqin/springboot-kafka
+    ports:
+    - 8080:8080
+    depends_on:
+    - kafka-server
+    networks:
+    - webnet
+    deploy:
+      replicas: 3
+      restart_policy:
+        condition: on-failure
+  kafka-server:
+    image: michaeldqin/kafka
+    hostname: kafka-server
+    ports:
+    - "2181:2181"
+    - "9092:9092"
+    environment:
+    - ADVERTISED_LISTENERS=PLAINTEXT://kafka-server:9092    
+    volumes:
+    - ${PWD}/.:/opt/kafka_2.12-1.0.0/log
+    networks:
+    - webnet
+    deploy:
+      placement:
+       constraints: [node.role == manager]
+networks:
+  webnet:
+```
+
+Please note, the only difference between `docker-compose-single-host.yml` and `docker-compose-swarm-cluster.yml` is the deployment instructions that contains in the `docker-compose-swarm-cluster.yml` only.
+
+### Start Spring Boot App & Kafka Broker Containers as Services on a Swarm Cluster
+
+```bash
+# Initialize a Swarm cluster
+docker swarm init
+
+# Deploy the stack as 'dev' environment
+docker stack deploy -c docker-compose-swarm-cluster.yml dev
+```
+
+### Check the Status of the Running Services on a Swarm Cluster
+
+```bash
+docker service ls
+## OR
+docker container ls
+
+## Check dev_springboot-webapp instances
+docker service ps dev_springboot-webapp
+```
 
 ### Testing Load Balancing
 
 ### Testing Scaling
 
+#### Update Docker-Compose File
+
+You can scale the app by changing the replicas value in docker-compose.yml, saving the change, and re-running the docker stack deploy command.
+
+Update: `replicas: 5`
+
+```yaml
+services:
+  springboot-webapp:
+    ...
+    deploy:
+      replicas: 5
+    ...
+```
+
+Re-Run:
+
+```bash
+docker stack deploy -c docker-compose-swarm-cluster.yml dev
+```
+
+### Take Down the Services and the Swarm Cluster
+
+```bash
+# Take down the stack
+docker stack rm dev
+
+# Leave the Swarm cluster
+docker swarm leave --force
+
+# Remove containers
+docker container rm $(docker container ls -a -q)
+```
+
+## Docker CLI Reference
+
+```bash
+docker stack ls                                            # List stacks or apps
+docker stack deploy -c <composefile> <appname>  # Run the specified Compose file
+docker service ls                 # List running services associated with an app
+docker service ps <service>                  # List tasks associated with an app
+docker inspect <task or container>                   # Inspect task or container
+docker container ls -q                                      # List container IDs
+docker stack rm <appname>                             # Tear down an application
+docker swarm init             # Create a single node (manager) swarm and join it
+docker swarm leave --force      # Take down a single node swarm from the manager
+```
