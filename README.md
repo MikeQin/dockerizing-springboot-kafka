@@ -130,7 +130,7 @@ networks:
   webnet:
 ```
 
-Please note, the only difference between `docker-compose-single-host.yml` and `docker-compose-swarm-cluster.yml` is the deployment instructions that contains in the `docker-compose-swarm-cluster.yml` only.
+Please note, the only difference between `docker-compose-single-host.yml` and `docker-compose-swarm-cluster.yml` is the deployment instructions in the `docker-compose-swarm-cluster.yml`.
 
 ### Start Spring Boot App & Kafka Broker Containers as Services on a Swarm Cluster
 
@@ -181,10 +181,10 @@ docker stack deploy -c docker-compose-swarm-cluster.yml dev
 ### Take Down the Services and the Swarm Cluster
 
 ```bash
-# Take down the stack
+# Take down the stack (application)
 docker stack rm dev
 
-# Leave the Swarm cluster
+# Take down the Swarm cluster
 docker swarm leave --force
 
 # Remove containers
