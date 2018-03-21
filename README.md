@@ -117,6 +117,12 @@ Please note, that `dev` is the project name, and it serves as the development en
 `docker ps`
 ![docker-ps](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-ps.png)
 
+### Open Spring Boot App Home
+
+In browser, type: `http://localhost:8080`
+
+![browser-host-home](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-host-home.png)
+
 ### Test Spring Boot App RESTful Web Services
 
 In browser, type: `http://localhost:8080/send`
