@@ -186,7 +186,12 @@ docker swarm init
 # Deploy the stack as 'dev' environment
 docker stack deploy -c docker-compose-swarm-cluster.yml dev
 ```
+docker swarm init
+
 ![docker-swarm-init](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-swarm-init.png)
+
+docker stack deploy
+
 ![docker-stack-deploy](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-stack-deploy.png)
 
 ### Check the Status of the Running Services on a Swarm Cluster
