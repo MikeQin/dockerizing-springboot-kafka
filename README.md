@@ -32,11 +32,11 @@ To facilitate the demostration of dockerization, I created two docker images:
 
 Both docker images are used to create multiple docker containers, which are managed through docker-compose. The docker-compose prescribes the docker stack, services, networks, and deployment, etc.
 
-## Running the Spring Boot Application and Kafka Server on a Single Host Server
+## Running the Spring Boot Application and Kafka Broker on a Single Host Server
 
 ### Docker-Compose-Single-Host File
 
-## Running the Spring Boot Application and Kafka Server on a Swarm Cluster
+## Running the Spring Boot Application and Kafka Broker on a Swarm Cluster
 
 ### Docker-Compose-Swarm-Cluster File
 
