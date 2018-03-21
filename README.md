@@ -28,6 +28,8 @@ To facilitate the demostration of dockerization, I created two docker images:
 - [Spring Boot Application Docker Image](https://hub.docker.com/r/michaeldqin/springboot-kafka/)
 - [Kafka Docker Image](https://hub.docker.com/r/michaeldqin/kafka/)
 
+![Topology](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/DockerizingAppKafka.png)
+
 Both docker images are used to create multiple docker containers, which are managed through docker-compose. The docker-compose prescribes the docker stack, services, networks, and deployment, etc.
 
 ## Running the Spring Boot Application and Kafka Server on a Single Host Server
