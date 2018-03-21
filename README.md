@@ -3,12 +3,14 @@
 ## Introduction
 The purpose of the repository is to showcase how to dockerize a Spring Boot application as well as a Kafka Broker (along with Zookeeper) on either a Single Host Server or on a Swarm Cluster.
 
+### Use Cases
 We know dockerization can be used for:
 - Development environment
 - Automated testing environment
 - Single host deployment
 - Swarm cluster deployment
 
+### Swarm Features
 On a Swarm cluster, the Swarm mode features:
 - Scaling
 - Load balancing
@@ -34,7 +36,41 @@ Both docker images are used to create multiple docker containers, which are mana
 
 ## Running the Spring Boot Application and Kafka Broker on a Single Host Server
 
+In order to run the docker containers, we need a docker-compose.yml to orchestrate the services.
+
 ### Docker-Compose-Single-Host File
+
+```yaml
+version: '3'
+services:
+  springboot-webapp:
+    image: michaeldqin/springboot-kafka
+    ports:
+    - 8080:8080
+    depends_on:
+    - kafka-server
+    networks:
+    - springboot-network
+    logging:
+      driver: json-file
+  kafka-server:
+    image: michaeldqin/kafka
+    hostname: kafka-server
+    ports:
+    - "2181:2181"
+    - "9092:9092"
+    environment:
+    - ADVERTISED_LISTENERS=PLAINTEXT://kafka-server:9092    
+    volumes:
+    - ${PWD}/.:/opt/kafka_2.12-1.0.0/log
+    networks:
+    - springboot-network
+    logging:
+      driver: json-file
+networks:
+  springboot-network:
+    driver: bridge
+```
 
 ## Running the Spring Boot Application and Kafka Broker on a Swarm Cluster
 
