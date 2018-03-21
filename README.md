@@ -203,11 +203,7 @@ docker service ps dev_springboot-webapp
 
 ### Testing Load Balancing
 
-You can see now `Hostname` are different.
-
-<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-s.png" />
-<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-1-s.png" />
-<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-2-s.png" />
+Open your favorite browser, in address bar you type: `http://localhost:8080`, then `enter` key. You can see `Hostname` is different from different browser windows, which means multiple application instances are serving the requests.
 
 ### Testing Scaling
 
