@@ -1,0 +1,29 @@
+version: '3'
+services:
+  springboot-webapp:
+    image: michaeldqin/springboot-kafka
+    ports:
+    - 8080:8080
+    depends_on:
+    - kafka-server
+    networks:
+    - springboot-network
+    logging:
+      driver: json-file
+  kafka-server:
+    image: michaeldqin/kafka
+    hostname: kafka-server
+    ports:
+    - "2181:2181"
+    - "9092:9092"
+    environment:
+    - ADVERTISED_LISTENERS=PLAINTEXT://kafka-server:9092    
+    volumes:
+    - ${HOME}/Docker/log:/opt/kafka_2.12-1.0.0/log
+    networks:
+    - springboot-network
+    logging:
+      driver: json-file
+networks:
+  springboot-network:
+    driver: bridge
