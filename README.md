@@ -1,4 +1,4 @@
-# Dockerizing Spring Boot Application &amp; Kafka Broker in a Swarm Cluster
+# Dockerizing Spring Boot Application &amp; Kafka Broker
 
 ## Introduction
 The purpose of the repository is to showcase how to dockerize a Spring Boot application as well as a Kafka Broker (along with Zookeeper) on either a Single Host Server or on a Swarm Cluster.
