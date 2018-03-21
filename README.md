@@ -62,6 +62,7 @@ docker pull michaeldqin/springboot-kafka
 
 docker pull michaeldqin/kafka
 ```
+![docker-images](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-images.png)
 
 ## Running the Spring Boot Application and Kafka Broker on a Single Host Server
 
@@ -103,19 +104,32 @@ networks:
     driver: bridge
 ```
 
-### Start Spring Boot App & Kafka Broker Containers as Services on a Single Host Server
+### Start the Application Services on a Single Host Server
 
 `docker-compose -p dev -f docker-compose-single-host.yml up`
 
-Please note, that `dev` is the project name, and it serves the development environment for developers.
+Please note, that `dev` is the project name, and it serves as the development environment for developers.
+
+![docker-compose-up](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-compose-up.png)
 
 ### Check the Running Containers
 
 `docker ps`
+![docker-ps](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-ps.png)
+
+### Test Spring Boot App RESTful Web Services
+
+In browser, type: `http://localhost:8080/send`
+![browser-host-send](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-host-send.png)
+
+In browser, type: `http://localhost:8080/receive`
+![browser-host-receive](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-host-receive.png)
 
 ### Take Down the Containers
 
 `docker-compose -p dev -f docker-compose-single-host.yml down`
+
+![docker-compose-down](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-compose-down.png)
 
 ## Running the Spring Boot Application and Kafka Broker on a Swarm Cluster
 
@@ -161,7 +175,7 @@ networks:
 
 Please note, the only difference between `docker-compose-single-host.yml` and `docker-compose-swarm-cluster.yml` is the deployment instructions in the `docker-compose-swarm-cluster.yml`.
 
-### Start Spring Boot App & Kafka Broker Containers as Services on a Swarm Cluster
+### Start the Application Stack on a Swarm Cluster
 
 ```bash
 # Initialize a Swarm cluster
@@ -170,6 +184,8 @@ docker swarm init
 # Deploy the stack as 'dev' environment
 docker stack deploy -c docker-compose-swarm-cluster.yml dev
 ```
+![docker-swarm-init](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-swarm-init.png)
+![docker-stack-deploy](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-stack-deploy.png)
 
 ### Check the Status of the Running Services on a Swarm Cluster
 
@@ -181,8 +197,15 @@ docker container ls
 ## Check dev_springboot-webapp instances
 docker service ps dev_springboot-webapp
 ```
+![docker-service-ls](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-service-ls.png)
 
 ### Testing Load Balancing
+
+You can see now `Hostname` are different.
+
+![browser-swarm-home](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home.png)
+![browser-swarm-home-1](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-1.png)
+![browser-swarm-home-2](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-2.png)
 
 ### Testing Scaling
 
@@ -219,6 +242,7 @@ docker swarm leave --force
 # Remove containers
 docker container rm $(docker container ls -a -q)
 ```
+![docker-swarm-leave](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-swarm-leave.png)
 
 ## Docker CLI Reference
 
