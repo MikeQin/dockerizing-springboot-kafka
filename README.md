@@ -205,9 +205,9 @@ docker service ps dev_springboot-webapp
 
 You can see now `Hostname` are different.
 
-<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home.png" width="774" height="680" />
-<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-1.png" width="774" height="680" />
-<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-2.png" width="774" height="680" />
+<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-s.png" />
+<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-1-s.png" />
+<img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-2-s.png" />
 
 ### Testing Scaling
 
