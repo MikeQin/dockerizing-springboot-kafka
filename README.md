@@ -1,9 +1,28 @@
 # Dockerizing Spring Boot Application &amp; Kafka Broker
 
+## Pre-Requisites
+
+In your OS or VM:
+
+- Install docker
+- Install docker-compose
+
+This demo uses Ubuntu Linux (16.04 LTS version) in Virtual Box.
+
 ## Introduction
+
 The purpose of the repository is to showcase how to dockerize a Spring Boot application as well as a Kafka Broker (along with Zookeeper) on either a Single Host Server or on a Swarm Cluster.
 
+### Docker Architectural Layers
+
+- Stack (Swarm Cluster)
+- Services (Single Host)
+- Container
+
+We are focusing on "Services" and "Swarm" layers for this demo.
+
 ### Use Cases
+
 We know dockerization can be used for:
 - Development environment
 - Automated testing environment
@@ -11,6 +30,7 @@ We know dockerization can be used for:
 - Swarm cluster deployment
 
 ### Swarm Features
+
 On a Swarm cluster, the Swarm mode features:
 - Scaling
 - Load balancing
@@ -26,6 +46,7 @@ The Spring Boot application uses Spring Cloud Stream to communicate (publish/rec
 ![The Design Diagram](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/Design.png)
 
 ## Preparation: Docker Images
+
 To facilitate the demostration of dockerization, I created two docker images:
 - [Spring Boot Application Docker Image](https://hub.docker.com/r/michaeldqin/springboot-kafka/)
 - [Kafka Docker Image](https://hub.docker.com/r/michaeldqin/kafka/)
@@ -33,6 +54,14 @@ To facilitate the demostration of dockerization, I created two docker images:
 ![Topology](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/DockerizingAppKafka.png)
 
 Both docker images are used to create multiple docker containers, which are managed through docker-compose. The docker-compose prescribes the docker stack, services, networks, and deployment, etc.
+
+### Pulling Docker Images from Docker Hub to Local Repository
+
+```bash
+docker pull michaeldqin/springboot-kafka
+
+docker pull michaeldqin/kafka
+```
 
 ## Running the Spring Boot Application and Kafka Broker on a Single Host Server
 
