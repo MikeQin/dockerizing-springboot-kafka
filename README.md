@@ -40,6 +40,8 @@ In order to run the docker containers, we need a docker-compose.yml to orchestra
 
 ### Docker-Compose-Single-Host File
 
+File: `docker-compose-single-host.yml`
+
 ```yaml
 version: '3'
 services:
