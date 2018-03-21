@@ -120,12 +120,14 @@ Please note, that `dev` is the project name, and it serves as the development en
 ### Test Spring Boot App RESTful Web Services
 
 In browser, type: `http://localhost:8080/send`
+
 ![browser-host-send](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-host-send.png)
 
 In browser, type: `http://localhost:8080/receive`
+
 ![browser-host-receive](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-host-receive.png)
 
-### Take Down the Containers
+### Take Down the Application Services
 
 `docker-compose -p dev -f docker-compose-single-host.yml down`
 
@@ -203,9 +205,9 @@ docker service ps dev_springboot-webapp
 
 You can see now `Hostname` are different.
 
-![browser-swarm-home](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home.png)
-![browser-swarm-home-1](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-1.png)
-![browser-swarm-home-2](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-2.png)
+![browser-swarm-home](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home.png =774x680)
+![browser-swarm-home-1](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-1.png =774x680)
+![browser-swarm-home-2](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/browser-swarm-home-2.png =774x680)
 
 ### Testing Scaling
 
@@ -230,7 +232,7 @@ Re-Run:
 docker stack deploy -c docker-compose-swarm-cluster.yml dev
 ```
 
-### Take Down the Services and the Swarm Cluster
+### Take Down the Application Stack and the Swarm Cluster
 
 ```bash
 # Take down the stack (application)
