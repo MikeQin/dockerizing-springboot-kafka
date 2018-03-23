@@ -52,7 +52,7 @@ To facilitate the demostration of dockerization, I created two docker images:
 - [Kafka Docker Image](https://hub.docker.com/r/michaeldqin/kafka/)
 
 Also it's worth noting how Kafka (Zookeeper) docker image is built:
-- [Kafka Docker Repo @ Github](https://github.com/MikeQin/dockerizing-springboot-kafka)
+- [Kafka Docker Repo @ Github](https://github.com/MikeQin/kafka-docker)
 
 <img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/DockerizingAppKafka.png" width="750">
 
