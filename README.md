@@ -51,6 +51,9 @@ To facilitate the demostration of dockerization, I created two docker images:
 - [Spring Boot Application Docker Image](https://hub.docker.com/r/michaeldqin/springboot-kafka/)
 - [Kafka Docker Image](https://hub.docker.com/r/michaeldqin/kafka/)
 
+Also it's worth noting how Kafka (Zookeeper) docker image is built:
+- [Kafka Docker Repo @ Github](https://github.com/MikeQin/dockerizing-springboot-kafka)
+
 <img src="https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/DockerizingAppKafka.png" width="750">
 
 Both docker images are used to create multiple docker containers, which are managed through docker-compose. The docker-compose prescribes the docker stack, services, networks, and deployment, etc.
