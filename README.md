@@ -17,7 +17,7 @@ The purpose of the repository is to showcase how to dockerize a Spring Boot appl
 
 - Stack (Swarm Cluster)
 - Services (Single Host)
-- Container
+- Containers (The lowest layer)
 
 We are focusing on "Services" and "Swarm" layers for this demo.
 
@@ -115,6 +115,7 @@ Please note, that `dev` is the project name, and it serves as the development en
 ### Check the Running Containers
 
 `docker ps`
+
 ![docker-ps](https://github.com/MikeQin/dockerizing-springboot-kafka/raw/master/images/docker-ps.png)
 
 ### Open Spring Boot App Home
